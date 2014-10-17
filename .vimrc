@@ -1,6 +1,7 @@
+"""Plugins"""
+
 set nocompatible
 filetype off
-
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
@@ -23,78 +24,60 @@ call vundle#end()
 filetype on
 filetype plugin on
 
-cabbr <expr> %% expand('%:p:h')
+
+"""Sanity - Minimum Viable Editor"""
+
+set nocompatible
 syntax on
-colorscheme badwolf
+set bs=2   "free backspace
+set history=770 undolevels=770
+set autoread noswapfile  "open and save handling
+set clipboard=unnamedplus  "use system clipboard as default register
+set guioptions=c  "get rid of useless GUI elements
+set number nuw=4  "gutter
+set ruler laststatus=2  "status line
+set hlsearch incsearch  "searching tweaks
+set ignorecase smartcase  "case insensitive searching by default
+set list listchars=tab:→\ ,trail:·  "display whitespace
+set nowrap linebreak  "soft text wrapping - linebreak conflicts with list :(
+set textwidth=79 colorcolumn=80 formatoptions=q  "hard text wrapping and formatting
+highlight ColorColumn ctermbg=233
+set autoindent expandtab tabstop=4 softtabstop=4 shiftwidth=4   "spaces and tabs hygiene
 autocmd! bufwritepost .vimrc source % "autoreloader
-set bs=2 "change backspace behaviour
-"let mapleader = ","
+set wildmenu wildmode=full  "zsh like tab-completion
 
-inoremap <C-c> <NOP>
 
-"search shortcuts
-noremap <C-n> :nohl<CR>
+"""Ergonomics"""
 
-"simpler tab navigation
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
-set splitright
-
+"No more shift for ex commands!
 nnoremap ; :
 nnoremap : ;
-nnoremap q; :
-xnoremap ; :
-xnoremap : ;
-xnoremap q; :
 
-set wildmenu wildmode=full "zsh like tab-completion
+"Simpler tab navigation
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-l> <c-w>l
+noremap <c-h> <c-w><c-h>
+set splitright
+
+"Bad habit
+inoremap <C-c> <NOP>
+
+"Cute searching
+noremap <C-n> :nohl<CR>
+nnoremap <M-n> nzz
+nnoremap <M-N> Nzz
 
 "indent / unindent"
 vnoremap < <gv
 vnoremap > >gv
 
-"set smartindent
-set autoindent
-set tabstop=4
-set shiftwidth=4
-set expandtab
-
-"cute searching
-nnoremap <M-n> nzz
-nnoremap <M-N> Nzz
+cabbr <expr> %% expand('%:p:h')
 
 
-"wrapping, line numbers, cosmetics
-set list
-set listchars=tab:→\ ,trail:␣
-set number
-set tw=79
-set nowrap
-set fo-=t
-set colorcolumn=80
-highlight ColorColumn ctermbg=233
+"""Lipstick"""
 
-set history=700
-set undolevels=700
-set autoread
-set linebreak
-
-"Searching
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-
-set noswapfile
-
-set guioptions=c                  " Get rid of useless GUI elements
-set nuw=4
-set ruler
-set laststatus=2
-
-set clipboard=unnamedplus
+colorscheme badwolf
 if has("gui_running")
   set cursorline
   if has("gui_gtk2")
@@ -104,11 +87,16 @@ if has("gui_running")
   endif
 endif
 
+
+"""Language specific"""
+
+autocmd FileType c,cpp,java,python,js,javascript,html autocmd BufWritePre <buffer> :StripWhitespace
 set wildignore+=*.pyc
+
+
+"""Plugin specific"""
+
 "let g:ctrlp_working_path_mode = 0
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
-
-"Language specific
-autocmd FileType c,cpp,java,python,js,javascript,html autocmd BufWritePre <buffer> :StripWhitespace
