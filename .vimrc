@@ -18,11 +18,12 @@ Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-entire'
 Plugin 'glts/vim-textobj-comment'
 Plugin 'drmikehenry/vim-fontsize'
-Plugin 'mjbrownie/django-template-textobjects'
 Plugin 'matchit.zip'
+Plugin 'mjbrownie/django-template-textobjects'
 call vundle#end()
 filetype on
 filetype plugin on
+filetype indent on
 
 
 """Sanity - Minimum Viable Editor"""
@@ -44,7 +45,8 @@ set textwidth=79 colorcolumn=80 formatoptions=q  "hard text wrapping and formatt
 highlight ColorColumn ctermbg=233
 set autoindent expandtab tabstop=4 softtabstop=4 shiftwidth=4   "spaces and tabs hygiene
 autocmd! bufwritepost .vimrc source % "autoreloader
-set wildmenu wildmode=full  "zsh like tab-completion
+set wildmenu wildmode=longest,full  "zsh like tab-completion
+set tags=tags;
 
 
 """Ergonomics"""
