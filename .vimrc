@@ -6,6 +6,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-fugitive'
 "Plugin 'kien/ctrlp.vim'
 Plugin 'Shougo/unite.vim'
@@ -15,8 +16,9 @@ Plugin 'kevinw/pyflakes-vim'
 Plugin 'fweep/vim-zsh-path-completion'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'kana/vim-textobj-user'
-Plugin 'kana/vim-textobj-entire'
-Plugin 'glts/vim-textobj-comment'
+Plugin 'kana/vim-textobj-entire'  "ae/ie
+Plugin 'glts/vim-textobj-comment' "ac/ic aC
+Plugin  'bps/vim-textobj-python'  "af/if ac/ic ]pf ]pc
 Plugin 'drmikehenry/vim-fontsize'
 Plugin 'matchit.zip'
 Plugin 'mjbrownie/django-template-textobjects'
@@ -92,6 +94,7 @@ endif
 
 """Language specific"""
 
+" DisableWhitespace  "listchars gets the job done
 autocmd FileType c,cpp,java,python,js,javascript,html autocmd BufWritePre <buffer> :StripWhitespace
 set wildignore+=*.pyc
 
@@ -102,3 +105,5 @@ set wildignore+=*.pyc
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
+
+let g:html_indent_inctags = "p,body,header,footer,section,nav"
