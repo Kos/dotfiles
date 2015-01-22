@@ -1,7 +1,7 @@
 [color]
 	ui = true
 [user]
-	name = Tomasz Wesolowski
+	name = Tomasz Wesołowski
 	email = kos@codility.com
 [alias]
 	p = add -p
@@ -16,7 +16,7 @@
 	ubranch = branch --no-merged
 	ldiff = diff ...MERGE_HEAD
 	rdiff = diff MERGE_HEAD...
-	di = diff
+	d = diff
 	ds = diff --staged
 	mylog = !git log --author=$(git config user.email)
 	publish = push origin HEAD -u

@@ -11,6 +11,8 @@ Plugin 'tpope/vim-fugitive'
 "Plugin 'kien/ctrlp.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-abolish'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'kevinw/pyflakes-vim'
 Plugin 'fweep/vim-zsh-path-completion'
@@ -62,7 +64,7 @@ noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
 noremap <c-h> <c-w><c-h>
-set splitright
+set splitbelow splitright
 
 "Bad habit
 inoremap <C-c> <NOP>
@@ -85,7 +87,7 @@ colorscheme badwolf
 if has("gui_running")
   set cursorline
   if has("gui_gtk2")
-    set guifont=Ubuntu\ Mono\ 12
+    set guifont=Ubuntu\ Mono\ 11
   elseif has("gui_win32")
     set guifont=Consolas:h11:cANSI
   endif
