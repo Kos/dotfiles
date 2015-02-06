@@ -2,7 +2,6 @@
 	ui = true
 [user]
 	name = Tomasz Wesołowski
-	email = kos@codility.com
 [alias]
 	p = add -p
 	st = status
