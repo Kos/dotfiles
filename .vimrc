@@ -24,6 +24,7 @@ Plugin  'bps/vim-textobj-python'  "af/if ac/ic ]pf ]pc
 Plugin 'drmikehenry/vim-fontsize'
 Plugin 'matchit.zip'
 Plugin 'mjbrownie/django-template-textobjects'
+Plugin 'scrooloose/nerdtree'
 call vundle#end()
 filetype on
 filetype plugin on
