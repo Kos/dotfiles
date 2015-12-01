@@ -25,6 +25,7 @@ Plugin 'drmikehenry/vim-fontsize'
 Plugin 'matchit.zip'
 Plugin 'mjbrownie/django-template-textobjects'
 Plugin 'scrooloose/nerdtree'
+"Plugin 'othree/html5-syntax.vim'
 call vundle#end()
 filetype on
 filetype plugin on
@@ -81,6 +82,8 @@ vnoremap > >gv
 
 cabbr <expr> %% expand('%:p:h')
 
+nnoremap <C-tab> <C-^>
+
 
 """Lipstick"""
 
@@ -100,7 +103,7 @@ endif
 " DisableWhitespace  "listchars gets the job done
 autocmd FileType c,cpp,java,python,js,javascript,html autocmd BufWritePre <buffer> :StripWhitespace
 set wildignore+=*.pyc
-
+let NERDTreeIgnore=['\~$', '.pyc$', '^__pycache__$']
 
 """Plugin specific"""
 
@@ -110,3 +113,17 @@ if executable('ag')
 endif
 
 let g:html_indent_inctags = "p,body,header,footer,section,nav"
+
+
+" Codility
+set path+=~/codility/frontend_v2/codility/templates
+set path+=~/codility/frontend_v2/codility/static
+set path+=~/codility/frontend_v2/codility/cui/static
+set path+=~/codility/frontend_v2/codility/cui/templates
+
+map <leader>1 yss<lt>h1<cr>j
+map <leader>2 yss<lt>h2<cr>j
+map <leader>3 yss<lt>h3<cr>j
+map <leader>4 yss<lt>h4<cr>j
+map <leader>p yss<lt>p<cr>j
+map <leader>l yss<lt>li<cr>j
