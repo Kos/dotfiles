@@ -1,5 +1,5 @@
 #!/bin/bash -e
-FILES=`find -type f -not -path "./.git/*" -not -name link.sh`
+FILES=`find \( -type f -o -type l \) -not -path "./.git/*" -not -name link.sh`
 IFS=$'\n'
 for i in $FILES; do
     $CMD mkdir -p ~/`dirname $i`
