@@ -1,0 +1,27 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Alignment",
+		"Anaconda",
+		"Babel",
+		"Djaneiro",
+		"Django",
+		"Emmet",
+		"File Rename",
+		"Git",
+		"GoSublime",
+		"JavaScriptNext - ES6 Syntax",
+		"JSX",
+		"Missing Palette Commands",
+		"Package Control",
+		"Sass",
+		"SublimeLinter",
+		"SublimeLinter-contrib-eslint",
+		"SublimeLinter-jshint",
+		"Text Pastry"
+	]
+}

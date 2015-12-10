@@ -1,0 +1,13 @@
+{
+	"detect_indentation": false,
+	"extensions":
+	[
+		"js",
+		"jsx",
+		"es6",
+		"jsx"
+	],
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true,
+	"word_wrap": false
+}

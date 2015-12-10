@@ -1,0 +1,29 @@
+{
+	"auto_complete": false,
+	"auto_complete_delay": 100,
+	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
+	"ensure_newline_at_eof_on_save": true,
+	"font_size": 10,
+	"hot_exit": false,
+	"ignored_packages":
+	[
+		"Go",
+		"GoSublime",
+		"JavaScriptNext - ES6 Syntax",
+		"SublimeLinter-jshint",
+		"Vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"indent_to_bracket": true,
+	"remember_open_files": true,
+	"rulers":
+	[
+		80,
+		120
+	],
+	"trim_trailing_white_space_on_save": true
+}
