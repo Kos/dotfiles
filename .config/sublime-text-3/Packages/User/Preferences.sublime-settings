@@ -1,15 +1,18 @@
 {
-	"auto_complete": false,
+	"auto_complete": true,
+	"auto_complete_commit_on_tab": false,
 	"auto_complete_delay": 100,
 	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
 	"ensure_newline_at_eof_on_save": true,
-	"font_size": 10,
+	"font_size": 11,
 	"hot_exit": false,
 	"ignored_packages":
 	[
+		"Floobits",
 		"Go",
 		"GoSublime",
-		"JavaScriptNext - ES6 Syntax",
+		"Markdown",
+		"SublimeCodeIntel",
 		"SublimeLinter-jshint",
 		"Vintage"
 	],

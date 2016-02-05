@@ -1,12 +1,50 @@
+/*
+    Anaconda USER settings
+*/
 {
+    /*
+        Anaconda Tooltip Options
+
+        Sublime Text 3 supports tooltips since build 3070, if anaconda
+        runs in a ST3 instalation equal or newer than build 3070 it can
+        be configured to show tooltips for documentation and signatures
+
+        The options below sets how the tooltip is shown. Set the theme
+        as dark if you are using a dark theme or light if you are using
+        a light one.
+    */
     "anaconda_tooltip_theme": "dark",  // possible options "light" or "dark"
 
-    "display_signatures": true,
-    "enable_signatures_tooltip": false,
+    /*
+        If you set the following option as true, anaconda will display the
+        signatures of the methods in a floating popup
 
-    "enable_docstrings_tooltip": false,
+        *note*: this action takes effect if "display_signatures" is true
+    */
+    "enable_signatures_tooltip": true,
+
+    /*
+        If you set the following option as true, anaconda will display the
+        documentation of modules, classes or methods in a floating popup
+    */
+    "enable_docstrings_tooltip": true,
+
+    /*
+        If the option below is set as true, anaconda will merge the
+        outputs of display_signatures and show documentation
+
+        *note*: This has only effect if tooltips are enabled
+    */
     "merge_signatures_and_doc": true,
 
+
+    /*
+        Auto project switching
+
+        If you set this to true, anaconda will detect project switches and
+        will reconnect a new JsonServer with the switched project
+        configuration
+    */
     "auto_project_switch": true,
 
     /*
@@ -52,6 +90,13 @@
     "python_interpreter": "python",
 
     /*
+        Disable anaconda completion
+
+        WARNING: set this as true will totally disable anaconda completion
+    */
+    "disable_anaconda_completion": false,
+
+    /*
         Set those as true if you don't want Sublime Text regular completions
     */
     "suppress_word_completions": false,
@@ -71,7 +116,7 @@
         If you set the following option as true, anaconda will display the
         signatures of the methods you are using while typing
     */
-
+    "display_signatures": true,
 
     /*
         The following set of options controls the pep8 autoformating behaviour
@@ -132,7 +177,45 @@
             W602 - Fix deprecated form of raising exception.
     */
 
+    /*
+        Autoformat files on save
+
+        This option is disabled by default, AutoPEP8 is really slow and it get
+        the file buffer read only while its working in the background.
+
+        Use this at your risk
+    */
     "auto_formatting": false,
+
+    /*
+        Timeout for the autoformatting tool before fail
+        Note: Take into account that depending on the size of the file you
+        want to autoformat, this can take a while
+    */
+    "auto_formatting_timeout": 1,  // seconds
+
+    /*
+        Enable unsafe changes:
+            https://github.com/hhatto/autopep8#more-advanced-usage
+
+        Set it as 0 if you are unsure here
+    */
+    "aggressive": 0,
+
+    /*
+        Do not fix the errors listed here:
+    */
+    "autoformat_ignore":
+    [
+    ],
+
+    /*
+        Fix only the errors listed here:
+    */
+    "autoformat_select":
+    [
+    ],
+
     /*
         Set the threshold limit for McCabe complexity checker
     */
@@ -243,6 +326,7 @@
     [
         // "E261",
         "E501", // Line too long
+        "E503", // Line break before binary operator
         "E731", // Do not assign a lambda expression
     ],
 
@@ -318,7 +402,7 @@
             - If this option is set to something different than false,
               pylint_ignore will be silently ignored
 
-            **** WARNING ****
+        **** WARNING ****
     */
     "pylint_rcfile": false,
 
@@ -337,7 +421,7 @@
         is used, but it is ignored since the warning is not that helpful.
         If you want to see this warning, set this option to false.
     */
-    "pyflakes_ignore_import_*": false,
+    "pyflakes_ignore_import_*": true,
 
     /*
         Set the following option to true if you want that anaconda check

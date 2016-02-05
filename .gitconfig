@@ -2,7 +2,6 @@
 	ui = true
 [user]
 	name = Tomasz Wesołowski
-	email = kosashi@gmail.com
 [alias]
 	st = status -s
 	ch = checkout

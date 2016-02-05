@@ -8,20 +8,20 @@
 		"Alignment",
 		"Anaconda",
 		"Babel",
+		"Case Conversion",
 		"Djaneiro",
 		"Django",
 		"Emmet",
 		"File Rename",
 		"Git",
 		"GoSublime",
-		"JavaScriptNext - ES6 Syntax",
-		"JSX",
 		"Missing Palette Commands",
 		"Package Control",
 		"Sass",
 		"SublimeLinter",
 		"SublimeLinter-contrib-eslint",
 		"SublimeLinter-jshint",
+		"Table Editor",
 		"Text Pastry"
 	]
 }
