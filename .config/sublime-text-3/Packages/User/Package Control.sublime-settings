@@ -21,6 +21,7 @@
 		"SublimeLinter",
 		"SublimeLinter-contrib-eslint",
 		"SublimeLinter-jshint",
+		"SublimeLinter-php",
 		"Table Editor",
 		"Text Pastry"
 	]
