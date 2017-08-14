@@ -19,6 +19,8 @@
 	trymerge = !"git merge $1 --no-commit; git merge --abort"
 	ignored = !git ls-files -v | grep "^[[:lower:]]"
 	aliases = config --get-regexp alias
+	email-private = config user.email kosashi@gmail.com
+	email-work = config user.email kos@codility.com
 [push]
 	default = tracking
 [merge]
@@ -26,3 +28,5 @@
 	conflictstyle = diff3
 [rebase]
 	autosquash = 1
+[diff]
+	compactionHeuristic = true
