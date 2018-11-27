@@ -21,6 +21,7 @@
 	aliases = config --get-regexp alias
 	email-private = config user.email kosashi@gmail.com
 	email-work = config user.email kos@codility.com
+	recent = !"A=$(git branch --sort=-committerdate |smenu -n 20 -d -l) && git checkout $A"
 [push]
 	default = tracking
 [merge]
@@ -29,4 +30,5 @@
 [rebase]
 	autosquash = 1
 [diff]
-	compactionHeuristic = true
+[difftool "diffpdf"]
+	cmd = diffpdf \"$LOCAL\" \"$REMOTE\"
