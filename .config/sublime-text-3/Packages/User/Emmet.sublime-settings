@@ -1,3 +1,0 @@
-{
-	"disabled_keymap_actions": "remove_tag,increment_number_by_1,toggle_comment,select_next_item,decrement_number_by_01,encode_decode_data_url,evaluate_math_expression,balance_inward,balance_outward,increment_number_by_10,reflect_css_value,prev_edit_point,select_previous_item,update_image_size,next_edit_point,split_join_tag,decrement_number_by_10,increment_number_by_01,matching_pair,decrement_number_by_1"
-}

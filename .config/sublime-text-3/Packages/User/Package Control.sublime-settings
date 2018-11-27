@@ -5,24 +5,9 @@
 	],
 	"installed_packages":
 	[
-		"Alignment",
-		"Anaconda",
-		"Babel",
-		"Case Conversion",
-		"Emmet",
-		"File Rename",
-		"Git",
-		"GitGutter",
-		"GoSublime",
 		"Markdown Table Formatter",
 		"Missing Palette Commands",
 		"Package Control",
-		"Sass",
-		"SublimeLinter",
-		"SublimeLinter-contrib-eslint",
-		"SublimeLinter-jshint",
-		"SublimeLinter-php",
-		"Table Editor",
-		"Text Pastry"
+		"Table Editor"
 	]
 }
