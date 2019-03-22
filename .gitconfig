@@ -28,6 +28,9 @@
 	# get the name of the main branch (from origin/HEAD), with fallback to "master".
 	mainline = !git get-name origin/HEAD | sed 's|origin/||' | sed 's|^HEAD$|master|'
 
+	# commits from current branch unmerged to mainline
+	# and commits from upstream branch unmerged to local branch
+	l = !git lg --boundary $(git commits-relevant-to-current-branch)
 [push]
 	default = tracking
 [merge]
