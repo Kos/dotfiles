@@ -22,6 +22,15 @@
 	email-private = config user.email kosashi@gmail.com
 	email-work = config user.email kos@codility.com
 	recent = !"A=$(git branch --sort=-committerdate |smenu -n 20 -d -l) && git checkout $A"
+
+	# return ref name (useful e.g. for translating HEAD to branch name)
+	get-name = !git rev-parse --abbrev-ref 2>/dev/null
+	# get the name of the main branch (from origin/HEAD), with fallback to "master".
+	mainline = !git get-name origin/HEAD | sed 's|origin/||' | sed 's|^HEAD$|master|'
+
+	# commits from current branch unmerged to mainline
+	# and commits from upstream branch unmerged to local branch
+	l = !git lg --boundary $(git commits-relevant-to-current-branch)
 [push]
 	default = tracking
 [merge]
