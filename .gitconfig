@@ -7,13 +7,15 @@
 	st = status -s
 	ch = checkout
 	ff = pull --ff-only --prune
-	lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
-	lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
-	lg = !"git lg1"
+	ls = log --color=always --decorate --graph --date=relative \
+	     --format=tformat:'%C(auto)%h%w(110,0,0)%d%C(reset) %C(white)%an, %ad%C(reset)%n%w(80,2,2)%s'
+	lst  = !GIT_PAGER=smartless git ls origin/HEAD..
 	wdiff = diff --color-words
 	ubranch = branch --no-merged
 	ldiff = diff ...MERGE_HEAD
+	llog = log -p ..MERGE_HEAD
 	rdiff = diff MERGE_HEAD...
+	rlog = log -p MERGE_HEAD..
 	ds = diff --staged
 	mylog = !git log --author=$(git config user.email) --all --pretty=format:"%h%x09%ad%x09%s"
 	publish = push origin HEAD -u
