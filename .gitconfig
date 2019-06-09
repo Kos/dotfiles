@@ -25,6 +25,7 @@
 	email-private = config user.email kosashi@gmail.com
 	email-work = config user.email kos@codility.com
 	recent = !"A=$(git branch --sort=-committerdate | fzf --reverse --height=20%) && git checkout $A"
+	mr = push -u origin HEAD -o merge_request.create
 [push]
 	default = tracking
 [merge]
@@ -35,3 +36,5 @@
 [diff]
 [difftool "diffpdf"]
 	cmd = diffpdf \"$LOCAL\" \"$REMOTE\"
+#[url "git@gitlab.codility.net:"]
+  #insteadOf = https://gitlab.codility.net/
