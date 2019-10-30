@@ -1,3 +1,4 @@
+[core]
 [color]
 	ui = true
 [user]
@@ -10,6 +11,7 @@
 	ls = log --color=always --decorate --graph --date=relative \
 	     --format=tformat:'%C(auto)%h%w(110,0,0)%d%C(reset) %C(white)%an, %ad%C(reset)%n%w(80,2,2)%s'
 	lst  = !GIT_PAGER=smartless git ls origin/HEAD..
+	lstt  = !GIT_PAGER=smartless git ls HEAD origin/HEAD --not `git merge-base HEAD origin/HEAD`^1
 	wdiff = diff --color-words
 	ubranch = branch --no-merged
 	ldiff = diff ...MERGE_HEAD
@@ -24,7 +26,7 @@
 	aliases = config --get-regexp alias
 	email-private = config user.email kosashi@gmail.com
 	email-work = config user.email kos@codility.com
-	recent = !"A=$(git branch --sort=-committerdate | fzf --reverse --height=20%) && git checkout $A"
+	recent = !"A=$(git branch --sort=-committerdate | sed 's/[ *]//g' | fzf --reverse --height=50% --preview 'git show --color {}') && git checkout $A"
 	mr = push -u origin HEAD -o merge_request.create
 [push]
 	default = tracking
