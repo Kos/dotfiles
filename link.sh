@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-FILES=`find \( -type f -o -type l \) -not -path "./.git/*" -not -name link.sh`
+FILES=`find \( -type f -o -type l \) -not -path "./.git/*" -not -name link.sh -not -name deps.sh -not -name install.sh`
 IFS=$'\n'
 for i in $FILES; do
   $CMD mkdir -p ~/`dirname $i`
