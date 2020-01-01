@@ -1,0 +1,3 @@
+alias gti=git
+alias drmit="docker run --rm -it"
+alias apt="sudo apt"
