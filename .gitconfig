@@ -25,7 +25,7 @@
 	ignored = !git ls-files -v | grep "^[[:lower:]]"
 	aliases = config --get-regexp alias
 	email-private = config user.email kosashi@gmail.com
-	email-work = config user.email kos@codility.com
+	email-work = config user.email tomasz.wesolowski@ro.co
 	recent = !"A=$(git branch --sort=-committerdate | sed 's/[ *]//g' | fzf --reverse --height=50% --preview 'git show --color {}') && git checkout $A"
 	mr = push -u origin HEAD -o merge_request.create
 [push]
