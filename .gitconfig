@@ -4,14 +4,16 @@
 [user]
 	name = Tomasz Wesołowski
 	useconfigonly = true
+	signingkey = 711F4669C0C3667C
 [alias]
 	st = status -s
 	ch = checkout
 	ff = pull --ff-only --prune
+	fff = pull --ff-only --prune --autostash
 	ls = log --color=always --decorate --graph --date=relative \
 	     --format=tformat:'%C(auto)%h%w(110,0,0)%d%C(reset) %C(white)%an, %ad%C(reset)%n%w(80,2,2)%s'
-	lst  = !GIT_PAGER=smartless git ls origin/HEAD..
-	lstt  = !GIT_PAGER=smartless git ls HEAD origin/HEAD --not `git merge-base HEAD origin/HEAD`^1
+	lst  = !git ls origin/HEAD..
+	lstt  = !git ls HEAD origin/HEAD --not `git merge-base HEAD origin/HEAD`^1
 	wdiff = diff --color-words
 	ubranch = branch --no-merged
 	ldiff = diff ...MERGE_HEAD
@@ -22,12 +24,14 @@
 	mylog = !git log --author=$(git config user.email) --all --pretty=format:"%h%x09%ad%x09%s"
 	publish = push origin HEAD -u
 	trymerge = !"git merge $1 --no-commit; git merge --abort"
+  whereami = rev-parse --abbrev-ref HEAD
 	ignored = !git ls-files -v | grep "^[[:lower:]]"
 	aliases = config --get-regexp alias
 	email-private = config user.email kosashi@gmail.com
-	email-work = config user.email tomasz.wesolowski@ro.co
+	email-work = config user.email kos@ro.co
 	recent = !"A=$(git branch --sort=-committerdate | sed 's/[ *]//g' | fzf --reverse --height=50% --preview 'git show --color {}') && git checkout $A"
 	mr = push -u origin HEAD -o merge_request.create
+  pb = branch --show-current
 	fix = "!sh -c 'set -e; \
 		commit_id=$(git rev-parse $1); \
 		shift; \

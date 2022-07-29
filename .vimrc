@@ -13,7 +13,6 @@ syntax on
 set bs=2   "free backspace
 set history=770 undolevels=770
 set autoread noswapfile  "open and save handling
-set clipboard=unnamedplus  "use system clipboard as default register
 set guioptions=c  "get rid of useless GUI elements
 set number nuw=4  "gutter
 set ruler laststatus=2  "status line
