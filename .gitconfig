@@ -5,6 +5,8 @@
 	name = Tomasz Wesołowski
 	useconfigonly = true
 	signingkey = 711F4669C0C3667C
+[commit]
+  gpgsign = true
 [alias]
 	st = status -s
 	ch = checkout
