@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+GITHUB_REPO=$(git remote -v |grep push |cut  -f2 |cut -d' ' -f1 |cut -d: -f2 |cut -d\. -f1)
+BRANCH=$(git branch --show-current)
+
+git push --set-upstream origin $BRANCH
+open https://github.com/${GITHUB_REPO}/pull/new/${BRANCH}
