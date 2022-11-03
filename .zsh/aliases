@@ -1,3 +1,17 @@
 alias gti=git
 alias drmit="docker run --rm -it"
 alias apt="sudo apt"
+
+# git
+alias gco="git checkout"
+alias gapa='git add --patch'
+alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign -m "--wip-- [skip ci]"'
+alias gst='git status'
+alias gsta='git stash save'
+alias gstd='git stash drop'
+alias gstp='git stash pop'
+alias gd='git diff'
+
+show-path() {
+  tr ':' '\n' <<< "$PATH"
+}
