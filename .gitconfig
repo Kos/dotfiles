@@ -18,22 +18,24 @@
 	lstt  = !git ls HEAD origin/HEAD --not `git merge-base HEAD origin/HEAD`^1
 	wdiff = diff --color-words
 	ubranch = branch --no-merged
+
 	ldiff = diff ...MERGE_HEAD
 	llog = log -p ..MERGE_HEAD
 	rdiff = diff MERGE_HEAD...
 	rlog = log -p MERGE_HEAD..
+	
 	ds = diff --staged
 	mylog = !git log --author=$(git config user.email) --all --pretty=format:"%h%x09%ad%x09%s"
 	publish = push origin HEAD -u
 	trymerge = !"git merge $1 --no-commit; git merge --abort"
-  whereami = rev-parse --abbrev-ref HEAD
+	whereami = rev-parse --abbrev-ref HEAD
 	ignored = !git ls-files -v | grep "^[[:lower:]]"
 	aliases = config --get-regexp alias
 	email-private = config user.email kosashi@gmail.com
 	email-work = config user.email kos@ro.co
 	recent = !"A=$(git branch --sort=-committerdate | sed 's/[ *]//g' | fzf --reverse --height=50% --preview 'git show --color {}') && git checkout $A"
 	mr = push -u origin HEAD -o merge_request.create
-  pb = branch --show-current
+	pb = branch --show-current
 	fix = "!sh -c 'set -e; \
 		commit_id=$(git rev-parse $1); \
 		shift; \
@@ -59,3 +61,8 @@
 	cmd = diffpdf \"$LOCAL\" \"$REMOTE\"
 #[url "git@gitlab.codility.net:"]
   #insteadOf = https://gitlab.codility.net/
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
