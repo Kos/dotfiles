@@ -11,7 +11,6 @@
 	st = status -s
 	ch = checkout
 	ff = pull --ff-only --prune
-	fff = pull --ff-only --prune --autostash
 	ls = log --color=always --decorate --graph --date=relative \
 	     --format=tformat:'%C(auto)%h%w(110,0,0)%d%C(reset) %C(white)%an, %ad%C(reset)%n%w(80,2,2)%s'
 	lst  = !git ls origin/HEAD..
@@ -24,7 +23,6 @@
 	rdiff = diff MERGE_HEAD...
 	rlog = log -p MERGE_HEAD..
 	
-	ds = diff --staged
 	mylog = !git log --author=$(git config user.email) --all --pretty=format:"%h%x09%ad%x09%s"
 	publish = push origin HEAD -u
 	trymerge = !"git merge $1 --no-commit; git merge --abort"
@@ -34,7 +32,10 @@
 	email-private = config user.email kosashi@gmail.com
 	email-work = config user.email kos@ro.co
 	recent = !"A=$(git branch --sort=-committerdate | sed 's/[ *]//g' | fzf --reverse --height=50% --preview 'git show --color {}') && git checkout $A"
+	# Gitlab
 	mr = push -u origin HEAD -o merge_request.create
+	# Github (via shell)
+	pr = pull-request
 	pb = branch --show-current
 	fix = "!sh -c 'set -e; \
 		commit_id=$(git rev-parse $1); \
@@ -49,6 +50,7 @@
 		if [ -n \"$dirtytree\" ]; then \
 			git stash pop; \
 		fi' -"
+	new-branch = !git fetch && git switch --no-track origin/HEAD -c
 [push]
 	default = tracking
 [merge]
