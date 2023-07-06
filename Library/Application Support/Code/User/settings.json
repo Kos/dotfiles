@@ -1,0 +1,63 @@
+{
+  "security.workspace.trust.untrustedFiles": "open",
+  "files.autoSave": "onFocusChange",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "window.title": "[${rootName}]${separator}${activeEditorShort}",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "explorer.confirmDelete": false,
+  "python.testing.pytestArgs": ["-vv"],
+  "python.formatting.provider": "black",
+  "jupyter.jupyterCommandLineArguments": [],
+  "editor.renderWhitespace": "boundary",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.editor.untitled.hint": "hidden",
+  "git.openRepositoryInParentFolders": "always",
+  "[python]": {
+    "editor.formatOnType": true,
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.indentSize": 4,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true,
+  "workbench.editor.closeEmptyGroups": false,
+  "workbench.editor.showTabs": false,
+  "editor.unicodeHighlight.allowedCharacters": {
+    "’": true
+  },
+  "python.defaultInterpreterPath": "/Users/kos/.pyenv/versions/3.9.13/envs/roman_api",
+  "search.quickOpen.history.filterSortOrder": "recency",
+  "rest-client.followredirect": false,
+  "rest-client.rememberCookiesForSubsequentRequests": false,
+  "editor.smoothScrolling": true,
+  "editor.mouseWheelScrollSensitivity": 0.7,
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.autoFormatStrings": true,
+  "python.analysis.enablePytestSupport": false,
+  "files.exclude": {
+    "**/__pycache__": true,
+    "node_modules": true
+  },
+  "black-formatter.importStrategy": "fromEnvironment",
+  "window.zoomLevel": 1
+}
