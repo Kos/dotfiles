@@ -33,7 +33,7 @@
     "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.indentSize": 4,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.organizeImports": "explicit"
     }
   },
   "[html]": {
@@ -41,7 +41,7 @@
   },
   "editor.formatOnSave": true,
   "workbench.editor.closeEmptyGroups": false,
-  "workbench.editor.showTabs": false,
+  "workbench.editor.showTabs": "single",
   "editor.unicodeHighlight.allowedCharacters": {
     "’": true
   },
