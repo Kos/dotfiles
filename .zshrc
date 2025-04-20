@@ -105,36 +105,21 @@ source $ZSH/oh-my-zsh.sh
 
 
 # Tools
-# Python
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
 
 # Node
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# todo: nvm lazy loading
 
-
-# Ro
-export REQUESTS_CA_BUNDLE=~/.trusted-ca-bundle.pem
-source ~/.zsh/ro
-
+# Work
+[ -f ~/.zsh/ro ] && source ~/.zsh/ro
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-
 # Personal
 source ~/.zsh/aliases
-# test -f ~/.zsh/local && source ~/.zsh/local
 
 # History
 setopt HIST_IGNORE_ALL_DUPS
 
-# Macos specific
-# iterm2
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
 # Debugger?
-export PYTHONBREAKPOINT="pdbr.set_trace"
+# export PYTHONBREAKPOINT="pdbr.set_trace"
