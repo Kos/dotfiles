@@ -4,6 +4,9 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+# zmodload zsh/zprof
+
+setopt transient_rprompt
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -12,13 +15,19 @@ export PATH=$HOME/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+# Editor
+if command -v hx >/dev/null 2>&1; then
+  export EDITOR="hx"
+  alias vim=hx
+elif command -v vim >/dev/null 2>&1; then
+  export EDITOR="vim"
+fi
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
-source ~/.p10k.zsh
-
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -80,46 +89,64 @@ source ~/.p10k.zsh
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git extract fzf)
+# plugins=(git extract fzf)
+plugins=(git extract)
 
+DISABLE_AUTO_UPDATE=true
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Tools
+# -----
 
 # Node
-# todo: nvm lazy loading
+command -v fnm > /dev/null && eval "$(fnm env)"
 
 # Work
 [ -f ~/.zsh/ro ] && source ~/.zsh/ro
+[ -f ~/.zsh/ro-extras ] && source ~/.zsh/ro-extras
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Atuin
+eval "$(atuin init zsh --disable-up-arrow)"
+
+# Some new additions
+function livegrep(){
+  rg --line-number --no-heading --color=always --smart-case $1 |
+    fzf -d ':' -n 1,3.. --ansi --no-sort --preview 'bat --color=always --highlight-line {2} {1}' --preview-window 'right:50%:+{2}+3/3,~3' \
+    --bind 'f1:become(hx {1}:{2})' \
+    --bind 'f2:become(nvim +{2} {1})' \
+    --bind 'f3:execute(gvim +{2} {1} &)' \
+    --bind 'f5:execute(git lg --color=always {1} | less -r)' \
+    --bind 'f6:execute(git diff --color=always {1} | less -r)'
+}
+
+function livefind(){
+  fd $1 | fzf --ansi --preview 'bat --color=always {1}' \
+  --bind 'f1:become(hx {1})' \
+  --bind 'f2:become(nvim {1})' \
+  --bind 'f3:execute(gvim {1} &)' \
+  --bind 'f5:execute(git lg --color=always {1} | less -r)' \
+  --bind 'f6:execute(git diff --color=always {1} | less -r)'
+}
+
 # Personal
 source ~/.zsh/aliases
 
-# History
-setopt HIST_IGNORE_ALL_DUPS
+# lesspipe
+export LESSOPEN="|/opt/homebrew/bin/lesspipe.sh %s"
+
+# jujutsu
+source <(jj util completion zsh)
 
 # Debugger?
 # export PYTHONBREAKPOINT="pdbr.set_trace"
+
+# Shell profiling
+# zprof
