@@ -1,6 +1,97 @@
 {
-  "security.workspace.trust.untrustedFiles": "open",
+  // Editor settings
+  "editor.formatOnSave": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.minimap.enabled": false,
+  "editor.mouseWheelScrollSensitivity": 0.7,
+  "editor.renderWhitespace": "boundary",
+  "editor.showDeprecated": true,
+  "editor.smoothScrolling": true,
+  "editor.unicodeHighlight.allowedCharacters": {
+    "’": true
+  },
+
+  "diffEditor.renderSideBySide": false,
+
+  "explorer.confirmDelete": false,
+
+  "search.quickOpen.history.filterSortOrder": "recency",
+
+  "window.title": "[${rootName}]${separator}${activeEditorMedium}",
+
+  "workbench.colorTheme": "Default Dark+",
+  "workbench.editor.closeEmptyGroups": false,
+  "workbench.editor.empty.hint": "hidden",
+
+  // Format on save!
   "files.autoSave": "onFocusChange",
+  "files.autoSaveDelay": 0,
+  "files.insertFinalNewline": true,
+
+  // VCS
+  "git.openRepositoryInParentFolders": "always",
+  "snowflake.connectionsConfigFile": "/Users/kos/.snowflake/connections.toml",
+
+  // Global ignores
+  "files.exclude": {
+    ".aider.chat.history.md": true,
+    ".test_durations": true,
+    "**/__pycache__": true,
+    "node_modules": true,
+    "terraform.tfstate*": true
+  },
+
+  // Agents and shenanigans
+  "redhat.telemetry.enabled": false,
+  "github.copilot.enable": {
+    "*": false
+  },
+
+  // Language specific
+  "[markdown]": {
+    "editor.formatOnSave": false
+    // "editor.unicodeHighlight.ambiguousCharacters": false,
+    // "editor.unicodeHighlight.invisibleCharacters": false,
+    // "diffEditor.ignoreTrimWhitespace": false,
+    // "editor.wordWrap": "on",
+    // "editor.quickSuggestions": true
+  },
+  "xml.format.preserveAttributeLineBreaks": false,
+  "[yaml]": {
+    "editor.formatOnSave": false
+  },
+
+  // Language specific - Python
+  "black-formatter.importStrategy": "fromEnvironment",
+  "isort.args": ["--src-path", "."],
+  "jupyter.jupyterCommandLineArguments": [],
+  "python.analysis.autoFormatStrings": true,
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.enablePytestSupport": false,
+  "python.analysis.extraPaths": ["/Users/kos/mono"],
+  "python.analysis.typeCheckingMode": "standard",
+  "python.testing.pytestArgs": ["-vv"],
+  "jupyter.askForKernelRestart": false,
+
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.indentSize": 4,
+    // Ruff as default
+    "editor.defaultFormatter": "charliermarsh.ruff"
+
+    // Black + isort for specific apps
+    // "editor.defaultFormatter": "ms-python.black-formatter",
+    // isort on specific repos only
+    // "editor.codeActionsOnSave": {
+    //   "source.fixAll": "explicit",
+    //   "source.organizeImports": "explicit"
+    // }
+  },
+
+  // Language specific - web languages
+  "js/ts.implicitProjectConfig.checkJs": true,
+
+  // Prettier for everything
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.tabSize": 2
@@ -9,7 +100,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.tabSize": 2
   },
-  "window.title": "[${rootName}]${separator}${activeEditorShort}",
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.tabSize": 2
@@ -18,46 +108,16 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.tabSize": 2
   },
-  "explorer.confirmDelete": false,
-  "python.testing.pytestArgs": ["-vv"],
-  "python.formatting.provider": "black",
-  "jupyter.jupyterCommandLineArguments": [],
-  "editor.renderWhitespace": "boundary",
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "workbench.editor.untitled.hint": "hidden",
-  "git.openRepositoryInParentFolders": "always",
-  "[python]": {
-    "editor.formatOnType": true,
-    "editor.defaultFormatter": "ms-python.black-formatter",
-    "editor.indentSize": 4,
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit"
-    }
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
   },
   "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
   },
-  "editor.formatOnSave": true,
-  "workbench.editor.closeEmptyGroups": false,
-  "workbench.editor.showTabs": "single",
-  "editor.unicodeHighlight.allowedCharacters": {
-    "’": true
-  },
-  "python.defaultInterpreterPath": "/Users/kos/.pyenv/versions/3.9.13/envs/roman_api",
-  "search.quickOpen.history.filterSortOrder": "recency",
-  "rest-client.followredirect": false,
-  "rest-client.rememberCookiesForSubsequentRequests": false,
-  "editor.smoothScrolling": true,
-  "editor.mouseWheelScrollSensitivity": 0.7,
-  "python.analysis.autoImportCompletions": true,
-  "python.analysis.autoFormatStrings": true,
-  "python.analysis.enablePytestSupport": false,
-  "files.exclude": {
-    "**/__pycache__": true,
-    "node_modules": true
-  },
-  "black-formatter.importStrategy": "fromEnvironment",
-  "window.zoomLevel": 1
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  }
 }
