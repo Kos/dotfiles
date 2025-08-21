@@ -27,6 +27,7 @@
 	publish = push origin HEAD -u
 	trymerge = !"git merge $1 --no-commit; git merge --abort"
 	whereami = rev-parse --abbrev-ref HEAD
+	exclude-file = "!f() { relpath=$GIT_PREFIX$1; echo $relpath >> .git/info/exclude; echo 'Added' $relpath 'to' $(pwd)/.git/info/exclude; } ; f"
 	ignored = !git ls-files -v | grep "^[[:lower:]]"
 	aliases = config --get-regexp alias
 	email-private = config user.email kosashi@gmail.com
@@ -37,34 +38,24 @@
 	# Github (via shell)
 	pr = pull-request
 	pb = branch --show-current
-	fix = "!sh -c 'set -e; \
-		commit_id=$(git rev-parse $1); \
-		shift; \
-		git commit --fixup $commit_id $@; \
-		if ! git diff --quiet HEAD; then \
-			dirtytree=1; \
-			echo \"Stashing your other changes...\"; \
-			git stash save \"Stashed before amending $commit_id\"; \
-		fi; \
-		git rebase --interactive --autosquash $commit_id~; \
-		if [ -n \"$dirtytree\" ]; then \
-			git stash pop; \
-		fi' -"
 	new-branch = !git fetch && git switch --no-track origin/HEAD -c
 [push]
 	default = tracking
+[pull]
+	ff = only
 [merge]
-	confictstyle = diff3
 	conflictstyle = diff3
 [rebase]
 	autosquash = 1
-[diff]
-[difftool "diffpdf"]
-	cmd = diffpdf \"$LOCAL\" \"$REMOTE\"
-#[url "git@gitlab.codility.net:"]
-  #insteadOf = https://gitlab.codility.net/
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[difftool "diffpdf"]
+	cmd = diffpdf \"$LOCAL\" \"$REMOTE\"
+[diff "daff-csv"]
+	command = daff diff --git
+[merge "daff-csv"]
+	name = daff tabular csv merge
+	driver = daff merge --output %A %O %A %B
