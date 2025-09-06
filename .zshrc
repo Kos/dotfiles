@@ -16,10 +16,10 @@ export PATH=$HOME/bin:$PATH
 export ZSH="$HOME/.oh-my-zsh"
 
 # Editor
-if command -v hx >/dev/null 2>&1; then
+if command -v hx >/dev/null; then
   export EDITOR="hx"
   alias vim=hx
-elif command -v vim >/dev/null 2>&1; then
+elif command -v vim >/dev/null; then
   export EDITOR="vim"
 fi
 
@@ -114,7 +114,7 @@ command -v fnm > /dev/null && eval "$(fnm env)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Atuin
-eval "$(atuin init zsh --disable-up-arrow)"
+command -v atuin > /dev/null && eval "$(atuin init zsh --disable-up-arrow)"
 
 # Some new additions
 function livegrep(){
@@ -143,7 +143,7 @@ source ~/.zsh/aliases
 export LESSOPEN="|/opt/homebrew/bin/lesspipe.sh %s"
 
 # jujutsu
-source <(jj util completion zsh)
+command -v jj > /dev/null && source <(jj util completion zsh)
 
 # Debugger?
 # export PYTHONBREAKPOINT="pdbr.set_trace"
