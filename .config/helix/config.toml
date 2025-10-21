@@ -1,0 +1,5 @@
+theme = "github_dark"
+
+[editor]
+auto-save.focus-lost = true
+
