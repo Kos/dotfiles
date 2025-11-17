@@ -3,8 +3,11 @@
 	ui = true
 [user]
 	name = Tomasz Wesołowski
+	email = kosashi@gmail.com
 	useconfigonly = true
 	signingkey = 711F4669C0C3667C
+[includeIf "hasconfig:remote.*.url:git@github.com:HealthByRo/**"]
+	path = .gitconfig.ro
 [commit]
   gpgsign = true
 [alias]
@@ -30,8 +33,6 @@
 	exclude-file = "!f() { relpath=$GIT_PREFIX$1; echo $relpath >> .git/info/exclude; echo 'Added' $relpath 'to' $(pwd)/.git/info/exclude; } ; f"
 	ignored = !git ls-files -v | grep "^[[:lower:]]"
 	aliases = config --get-regexp alias
-	email-private = config user.email kosashi@gmail.com
-	email-work = config user.email kos@ro.co
 	recent = !"A=$(git branch --sort=-committerdate | sed 's/[ *]//g' | fzf --reverse --height=50% --preview 'git show --color {}') && git checkout $A"
 	# Gitlab
 	mr = push -u origin HEAD -o merge_request.create
@@ -40,7 +41,9 @@
 	pb = branch --show-current
 	new-branch = !git fetch && git switch --no-track origin/HEAD -c
 [push]
-	default = tracking
+	# "git push" on an untracked branch will create a matching remote branch and track it
+	default = simple
+	autoSetupRemote = true
 [pull]
 	ff = only
 [merge]
