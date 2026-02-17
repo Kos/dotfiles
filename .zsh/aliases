@@ -15,3 +15,5 @@ alias gd='git diff'
 show-path() {
   tr ':' '\n' <<< "$PATH"
 }
+
+alias act="source .venv/bin/activate"
