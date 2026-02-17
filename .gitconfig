@@ -13,7 +13,7 @@
 [alias]
 	st = status -s
 	ch = checkout
-	ff = pull --ff-only --prune
+	ff = pull --ff-only --prune --autostash
 	ls = log --color=always --decorate --graph --date=relative \
 	     --format=tformat:'%C(auto)%h%w(110,0,0)%d%C(reset) %C(white)%an, %ad%C(reset)%n%w(80,2,2)%s'
 	lst  = !git ls origin/HEAD..
