@@ -1,10 +1,16 @@
 [[language]]
 name = "python"
 auto-format = true
-language-servers = ["ruff", "pyright"]
+language-servers = ["ruff", "basedpyright"]
+roots = ["pyproject.toml", "app.yaml"]
 
 [language-server.ruff]
 command = "ruff"
 args = ["server"]
 
-[language-server.pyright]
+[language-server.basedpyright.config.basedpyright.analysis]
+typeCheckingMode = "standard"
+
+[[language]]
+name = "markdown"
+soft-wrap = { enable = true }
