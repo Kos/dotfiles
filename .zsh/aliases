@@ -17,3 +17,21 @@ show-path() {
 }
 
 alias act="source .venv/bin/activate"
+alias typora='open -a Typora'
+
+# Guard against `rg -r` (means --replace, not recursive — rg is recursive by default)
+rg() {
+  local arg
+  for arg in "$@"; do
+    case "$arg" in
+      --) break ;;
+      --*) ;;
+      -*r*)
+        printf '\e[33mWarning: rg %s — the -r flag means --replace, not --recursive (rg is recursive by default).\e[0m\n' "$arg" >&2
+        printf 'Drop the -r flag, or use --replace if you meant replacement.\n' >&2
+        return 1
+        ;;
+    esac
+  done
+  command rg "$@"
+}
