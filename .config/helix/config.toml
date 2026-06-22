@@ -1,4 +1,8 @@
-theme = "github_dark"
+#theme = "github_dark"
+theme = "catppuccin_macchiato"
+
+[keys.normal]
+F5 = ":reload-all"
 
 [editor]
 auto-save.focus-lost = true
