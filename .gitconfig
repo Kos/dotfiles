@@ -16,6 +16,8 @@
 	ff = pull --ff-only --prune --autostash
 	ls = log --color=always --decorate --graph --date=relative \
 	     --format=tformat:'%C(auto)%h%w(110,0,0)%d%C(reset) %C(white)%an, %ad%C(reset)%n%w(80,2,2)%s'
+	ls1 = log --color=always --decorate --graph --date=short \
+	      --format=tformat:'%C(auto)%h%d%C(reset) %C(white)%ad %an%C(reset) %s'
 	lst  = !git ls origin/HEAD..
 	lstt  = !git ls HEAD origin/HEAD --not `git merge-base HEAD origin/HEAD`^1
 	wdiff = diff --color-words
@@ -37,9 +39,9 @@
 	# Gitlab
 	mr = push -u origin HEAD -o merge_request.create
 	# Github (via shell)
-	pr = pull-request
 	pb = branch --show-current
-	new-branch = !git fetch && git switch --no-track origin/HEAD -c
+	new-branch = "!f() { name=\"$1\"; case \"$name\" in kos/*) ;; *) name=\"kos/$(date +%b%-d | tr '[:upper:]' '[:lower:]')-$name\";; esac; git fetch-if-stale && git switch --no-track origin/HEAD -c \"$name\"; }; f"
+	fetch-if-stale = "!f() { m=${1:-${GIT_FETCH_STALE_MINUTES:-$(git config fetch.staleMinutes 2>/dev/null || echo 15)}}; fh=$(git rev-parse --git-path FETCH_HEAD); if [ ! -f \"$fh\" ] || [ -z \"$(find \"$fh\" -mmin -\"$m\" 2>/dev/null)\" ]; then git fetch --all --prune; fi; }; f"
 [push]
 	# "git push" on an untracked branch will create a matching remote branch and track it
 	default = simple
@@ -62,3 +64,10 @@
 [merge "daff-csv"]
 	name = daff tabular csv merge
 	driver = daff merge --output %A %O %A %B
+[rerere]
+	enabled = true
+[advice]
+	defaultBranchName = false
+[url "git@github.com:healthByRo/"]
+	insteadOf = https://github.com/healthbyro/
+	insteadOf = https://github.com/healthByRo/
