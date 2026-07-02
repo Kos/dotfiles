@@ -63,7 +63,6 @@
 
   // Language specific - Python
   "black-formatter.importStrategy": "fromEnvironment",
-  "isort.args": ["--src-path", "."],
   "jupyter.jupyterCommandLineArguments": [],
   "python.analysis.autoFormatStrings": true,
   "python.analysis.autoImportCompletions": true,

@@ -4,16 +4,16 @@ fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 # zmodload zsh/zprof
 
 setopt transient_rprompt
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/bin:$HOME/.local/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:$HOME/go/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -141,6 +141,7 @@ function livefind(){
 
 # Personal
 source ~/.zsh/aliases
+source ~/.zsh/zellij-completion
 
 # lesspipe
 export LESSOPEN="|/opt/homebrew/bin/lesspipe.sh %s"
@@ -150,6 +151,56 @@ command -v jj > /dev/null && source <(jj util completion zsh)
 
 # Debugger?
 # export PYTHONBREAKPOINT="pdbr.set_trace"
+
+#bindkey "^[C" forward-word
+#bindkey "^[D" backward-word
+bindkey "\e[1;3C" forward-word
+bindkey "\e[1;3D" backward-word
+# completions!
+get-completion-command() {
+  local cmd="$BUFFER"
+
+  case "$cmd" in
+    yarn\ e2e\ *)
+      rg --files -g "*.spec.ts"
+      ;;
+    doer\ *)
+      echo "doer -list"
+      ;;
+    go\ test\ *)
+      echo "git ls-files | grep _test.go"
+      ;;
+    yarn\ test\ *)
+      echo "git ls-files | grep .test.ts"
+      ;;
+    *)
+      rg --files
+      ;;
+  esac
+}
+
+# custom widget
+fzf-smart-complete() {
+  # Grab left word (before the cursor)
+  local left="${BUFFER:0:$CURSOR}"
+  local word=${left##* }
+  
+  # run your fuzzy generator with $word as hint/query
+  local selection
+  selection=$(get-completion-command "$left" | fzf --query="$word") || return
+
+  # replace that word with selected item
+  BUFFER="${left%${word}}${selection}${BUFFER:$CURSOR}"
+  CURSOR=$(( ${#left%${word}} + ${#selection} ))
+  zle redisplay
+}
+
+# bind it to Ctrl-T
+zle -N fzf-smart-complete
+bindkey '^T' fzf-smart-complete
+
+# zoxide!
+eval "$(zoxide init zsh)"
 
 # Shell profiling
 # zprof
