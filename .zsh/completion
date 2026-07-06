@@ -1,0 +1,34 @@
+# Completion system — extracted from oh-my-zsh defaults
+# See: zshcompsys(1), zshcompwid(1)
+
+zmodload -i zsh/complist
+
+autoload -Uz compinit && compinit
+# allow completions registered via bash's `complete` builtin
+autoload -U +X bashcompinit && bashcompinit
+
+# don't immediately select the first match, wait for a second tab
+unsetopt menu_complete
+# show the menu after pressing tab twice
+setopt auto_menu
+# tab-complete even when the cursor is mid-word
+setopt complete_in_word
+# move cursor to end of word after completing
+setopt always_to_end
+
+# highlight the current selection in the menu
+zstyle ':completion:*:*:*:*:*' menu select
+# case-insensitive matching (Foo matches foo and vice versa)
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|=*' 'l:|=* r:|=*'
+# complete . and .. when typing cd
+zstyle ':completion:*' special-dirs true
+# no colors in the completion list (keep it clean)
+zstyle ':completion:*' list-colors ''
+# cache expensive completions (apt, brew, etc.)
+zstyle ':completion:*' use-cache yes
+zstyle ':completion:*' cache-path "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compcache"
+
+# Shift-Tab to go backwards through the completion menu
+if [[ -n "${terminfo[kcbt]}" ]]; then
+  bindkey "${terminfo[kcbt]}" reverse-menu-complete
+fi
