@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# Pager
+export LESS='-R --mouse'
+export LESSOPEN="|/opt/homebrew/bin/lesspipe.sh %s"
+
+# Key bindings
+bindkey -e
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '\C-x\C-e' edit-command-line
+
+if [[ -n "${terminfo[khome]}" ]]; then
+  bindkey "${terminfo[khome]}" beginning-of-line
+fi
+if [[ -n "${terminfo[kend]}" ]]; then
+  bindkey "${terminfo[kend]}" end-of-line
+fi
+if [[ -n "${terminfo[kdch1]}" ]]; then
+  bindkey "${terminfo[kdch1]}" delete-char
+fi
+bindkey "\e[1;3C" forward-word
+bindkey "\e[1;3D" backward-word
+
+# Reasonable ctrl+w, see https://github.com/ohmyzsh/ohmyzsh/issues/8743
+WORDCHARS=''
+
+# History
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=10000
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_verify
+setopt share_history
+
+# Shell options
+setopt auto_cd
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt pushdminus
+setopt multios
+setopt long_list_jobs
+setopt interactivecomments
+setopt no_beep
+
+# URL paste safety
+if [[ -e "${fpath[(r)*/url-quote-magic]}" ]]; then
+  autoload -Uz bracketed-paste-magic url-quote-magic
+  zle -N bracketed-paste bracketed-paste-magic
+  zle -N self-insert url-quote-magic
+fi

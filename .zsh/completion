@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Completion system — extracted from oh-my-zsh defaults
 # See: zshcompsys(1), zshcompwid(1)
 
@@ -32,3 +34,52 @@ zstyle ':completion:*' cache-path "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compcache
 if [[ -n "${terminfo[kcbt]}" ]]; then
   bindkey "${terminfo[kcbt]}" reverse-menu-complete
 fi
+
+# jujutsu
+# command -v jj > /dev/null && source <(jj util completion zsh)
+
+# zellij - off for now
+# source ~/.zsh/zellij-completion
+
+# Smart complete - to try out later
+# get-completion-command() {
+#   local cmd="$BUFFER"
+
+#   case "$cmd" in
+#     yarn\ e2e\ *)
+#       rg --files -g "*.spec.ts"
+#       ;;
+#     doer\ *)
+#       echo "doer -list"
+#       ;;
+#     go\ test\ *)
+#       echo "git ls-files | grep _test.go"
+#       ;;
+#     yarn\ test\ *)
+#       echo "git ls-files | grep .test.ts"
+#       ;;
+#     *)
+#       rg --files
+#       ;;
+#   esac
+# }
+
+# custom widget
+# fzf-smart-complete() {
+#   # Grab left word (before the cursor)
+#   local left="${BUFFER:0:$CURSOR}"
+#   local word=${left##* }
+  
+#   # run your fuzzy generator with $word as hint/query
+#   local selection
+#   selection=$(get-completion-command "$left" | fzf --query="$word") || return
+
+#   # replace that word with selected item
+#   BUFFER="${left%${word}}${selection}${BUFFER:$CURSOR}"
+#   CURSOR=$(( ${#left%${word}} + ${#selection} ))
+#   zle redisplay
+# }
+
+# bind it to Ctrl-T
+# zle -N fzf-smart-complete
+# bindkey '^T' fzf-smart-complete
