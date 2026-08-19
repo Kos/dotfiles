@@ -8,8 +8,6 @@
 	signingkey = 711F4669C0C3667C
 [includeIf "hasconfig:remote.*.url:git@github.com:HealthByRo/**"]
 	path = .gitconfig.ro
-[commit]
-  gpgsign = true
 [alias]
 	st = status -s
 	ch = checkout
