@@ -1,5 +1,5 @@
-if [[ -z "$ZELLIJ" && -z "$TERM_PROGRAM" ]]; then
-    zellij attach -c
+if command -v zellij >/dev/null && [[ -z "$ZELLIJ" && -z "$TERM_PROGRAM" ]]; then
+  zellij attach -c
 fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
