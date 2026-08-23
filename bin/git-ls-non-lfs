@@ -1,0 +1,29 @@
+#!/bin/sh
+set -e
+
+toplevel=$(git rev-parse --show-toplevel)
+
+if [ -n "$1" ]; then
+	target=$(cd "$1" 2>/dev/null && pwd) || { echo "error: $1: No such directory" >&2; exit 1; }
+else
+	target=$(pwd)
+fi
+
+case "$target" in
+	"$toplevel") p="" ;;
+	"$toplevel"/*) p="${target#$toplevel/}/" ;;
+	*) echo "error: $1: outside repository" >&2; exit 1 ;;
+esac
+
+a=$(mktemp) b=$(mktemp)
+trap 'rm -f "$a" "$b"' EXIT
+
+git -C "$toplevel" ls-files -- "${p:-.}" | sort >"$a"
+
+if [ -n "$p" ]; then
+	git lfs ls-files --name-only -I "$p"
+else
+	git lfs ls-files --name-only
+fi | sort >"$b"
+
+comm -23 "$a" "$b"
