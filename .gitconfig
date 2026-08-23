@@ -22,9 +22,9 @@
 	ubranch = branch --no-merged
 
 	ldiff = diff ...MERGE_HEAD
-	llog = log -p ..MERGE_HEAD
+	llog = log ..MERGE_HEAD
 	rdiff = diff MERGE_HEAD...
-	rlog = log -p MERGE_HEAD..
+	rlog = log MERGE_HEAD..
 	
 	mylog = !git log --author=$(git config user.email) --all --pretty=format:"%h%x09%ad%x09%s"
 	publish = push origin HEAD -u
