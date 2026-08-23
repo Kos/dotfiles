@@ -7,6 +7,7 @@ alias drmit="docker run --rm -it"
 alias apt="sudo apt"
 
 # git
+alias gp="git push"
 alias gco="git checkout"
 alias gapa='git add --patch'
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign -m "--wip-- [skip ci]"'

@@ -1,8 +1,22 @@
 #!/bin/bash
 
 # Pager
-export LESS='-R --mouse'
+# export LESS='-R --mouse' # --mouse breaks selection? scroll still works without it
+export LESS='-R'
 export LESSOPEN="|/opt/homebrew/bin/lesspipe.sh %s"
+
+# Colorful ls (BSD uses LSCOLORS + -G, GNU uses LS_COLORS + --color)
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+if (( $+commands[dircolors] )); then
+  source <(dircolors -b)
+else
+  export LS_COLORS="di=1;36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
+fi
+if [[ "$OSTYPE" == darwin* ]]; then
+  alias ls='ls -G'
+elif ls --color=tty &>/dev/null; then
+  alias ls='ls --color=tty'
+fi
 
 # Key bindings
 bindkey -e
@@ -37,7 +51,6 @@ setopt hist_verify
 setopt share_history
 
 # Shell options
-setopt auto_cd
 setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushdminus
