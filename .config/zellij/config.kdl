@@ -18,6 +18,7 @@ keybinds clear-defaults=true {
         bind "Ctrl g" {
             Run "lazygit" {
                 direction "right"
+                close_on_exit true
             }
             SwitchToMode "normal"
         }
