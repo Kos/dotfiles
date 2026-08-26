@@ -4,6 +4,9 @@ theme = "catppuccin_macchiato"
 [keys.normal]
 F5 = ":reload-all"
 
+[keys.normal.space]
+q = ":wq"
+
 [editor]
 auto-save.focus-lost = true
 
