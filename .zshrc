@@ -23,7 +23,7 @@ export PATH=$HOME/bin:$HOME/.local/bin:$HOME/go/bin:$PATH
 # P10K theme + settings
 setopt transient_rprompt
 source ~/powerlevel10k/powerlevel10k.zsh-theme
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+source ~/.p10k.zsh
 
 # Editor
 if command -v hx >/dev/null; then
