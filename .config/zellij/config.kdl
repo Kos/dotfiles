@@ -17,7 +17,12 @@ keybinds clear-defaults=true {
         bind "f" { ToggleFocusFullscreen; SwitchToMode "normal"; }
         bind "Ctrl g" {
             Run "lazygit" {
-                direction "right"
+                floating true
+                pinned true
+                x "50%"
+                y "0%"
+                width "50%"
+                height "100%"
                 close_on_exit true
             }
             SwitchToMode "normal"
