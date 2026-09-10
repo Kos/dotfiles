@@ -9,9 +9,9 @@ test -d ~/powerlevel10k || git clone --depth=1 https://github.com/romkatv/powerl
 # curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 
 # Deps - fedora, debian, macos
-command -v dnf  && sudo dnf install fzf wget jq lazygit zsh zoxide
-command -v apt  && sudo apt install fzf wget jq lazygit zsh
-command -v brew && brew     install fzf wget jq lazygit zsh
+command -v dnf  && sudo dnf install -y fzf wget jq zsh helix zoxide
+command -v apt  && sudo apt install    fzf wget jq lazygit zsh
+command -v brew && brew     install    fzf wget jq lazygit zsh
 
 # Deps - bleeding edge, from source
-command -v zellij || (command -v cargo && cargo binstall zellij)
+command -v zellij || (command -v cargo && cargo binstall zellij || true)
