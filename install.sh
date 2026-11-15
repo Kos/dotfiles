@@ -10,4 +10,4 @@ test -d ~/powerlevel10k || git clone --depth=1 https://github.com/romkatv/powerl
 # curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 
-command -v mise && mise use -g fzf jq lazygit helix zellij@0.45 zoxide
+command -v mise && mise use -g fzf jq rg fd lazygit helix zellij@0.45 zoxide
