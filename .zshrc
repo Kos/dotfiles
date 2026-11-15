@@ -15,6 +15,7 @@ source ~/.zsh/behaviour
 source ~/.zsh/completion
 
 export PATH=$HOME/bin:$HOME/.local/bin:$HOME/go/bin:$PATH
+command -v mise > /dev/null && eval $(mise activate zsh --shims)
 
 # P10K theme + settings
 setopt transient_rprompt
